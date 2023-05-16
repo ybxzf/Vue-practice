@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>监视属性</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 这是一个容器 -->
+		<div class="root">
+
+			<!-- 监视属性watch：
+				1. 当监视的属性发生变化时，回调函数（watch里面的属性和方法）自动调用，进行相关操作 
+				2. 监视的属性必须存在，才能被监视
+				3. 监视的两种写法：
+					new Vue时传入watch并配置
+					通过vm.$watch监视
+			-->
+			<h1>今天天氣很{{info}}</h1>
+			<button @click="changeWeather">点我改变天气</button>
+		</div>
+
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false ; //阻止vue启动时生成生产提示
+			const vm = new Vue({
+				el:'.root',
+				data:{
+					isHot:true,
+				},
+				computed:{
+					info(){
+						return this.isHot ? '炎热':'凉爽';
+					}
+				},
+				methods: {
+					changeWeather(){
+						this.isHot=!this.isHot;
+					},
+					
+				},
+				/*  第一种写法，明确知道要监视哪个属性时推荐使用
+				watch:{
+					isHot:{   //被监视的属性
+						immediate:false,//	默认为false，当改为true时表示初始化时就调用一次handler
+						handler(newValue,oldValue){   //当监视的属性发生改变时就调用，并可以返回修改前后的值
+							console.log('isHot被修改了',newValue,oldValue);
+						}
+					}
+				}  */
+			})
+			//   第二种写法，当时不知道要监视哪个属性，后面才知道的可以用这个:vm.$watch('XXX',{监测到属性后执行的代码})
+			vm.$watch('isHot', { 
+				immediate:false,//	默认为false，当改为true时表示初始化时就调用一次handler
+					handler(newValue,oldValue){   //当监视的属性发生改变时就调用，并可以返回修改前后的值
+						console.log('isHot被修改了',newValue,oldValue);
+					}
+			})
+
+			
+		</script>
+	</body>
+</html>

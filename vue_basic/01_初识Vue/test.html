@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>列表渲染</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<style>
+			.outer{
+				width: 90%;
+				height: 100px;
+				border:1px solid rgb(235, 26, 26);
+				position: absolute;
+				top: 10%;
+				left: 2%;
+				
+			}
+			.inner{
+				width: 100%;
+				position: absolute;
+				top:50px;
+				/* 两个td边框合并 */
+				border-collapse:collapse;
+				border:1px solid #000;
+			}
+			.back{
+				background-color:rgb(235,236,238) ;	
+			}
+			.listTitle{
+				text-align: center;
+				border-bottom:2px solid rgb(0, 0, 0);
+			}
+			/* 奇数行样式 */
+			.listCss:nth-child(odd){
+				text-align: center;
+				background-color:rgb(235,236,238) ;
+				border-bottom:2px solid rgb(132,174,225);
+			}
+			/* 偶数行样式 */
+			.listCss:nth-child(even){
+				text-align: center;
+				background-color:white;
+				border-bottom:2px solid rgb(132,174,225);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<!-- 这是一个容器 -->
+		<div id="root" class="outer">
+			
+			<table class="inner" >
+				<tr style="width: 100%" class="listTitle">
+					<th>Site-厂端</th>
+					<th>部门</th>
+					<th>管理层级</th>
+					<th>关键岗位需求人数</th>
+					<th>人才满足策略</th>
+					<th>行动计划本月进度</th>
+					<th>计划完成时间(Y/M/D)</th>
+					<th>盘点月份</th>
+				</tr>
+				<!--方式一 
+					<tr v-for="(p,index) in list" :class="index%2===1?'back':'' "> 
+				-->
+				<tr v-for="(p,index) in list" class="listCss">
+					<td> {{p.id}} </td>
+					<td> {{p.part}} </td>
+					<td> {{p.managementLevel}} </td>
+					<td> {{p.need}} </td>
+					<td> {{p.path}} </td>
+					<td> {{p.progressMonth}} </td>
+					<td> {{p.finishDate}} </td>
+					<td> {{p.inventoryMonth}} </td>
+				</tr>
+				
+			</table>
+		</div>
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false ; //阻止vue启动时生成生产提示
+			new Vue({
+                el:'#root',
+                data:{
+                    list:[
+                        {id:'WIH-P1',part:'张三',managementLevel:18,need:1,path:'人才培养',progressMonth:'',finishDate:'2021/12/31',inventoryMonth:'202106'},
+                        {id:'WKS-P1',part:'李四',managementLevel:19,need:1,path:'人才培养',progressMonth:'',finishDate:'2021/12/31',inventoryMonth:'202106'},
+                        {id:'WIH-KuKou-P1',part:'王五',managementLevel:20,need:1,path:'人才培养',progressMonth:'',finishDate:'2021/12/31',inventoryMonth:'202106'},
+                    ],
+                    
+                },				
+				methods: {
+				},
+            })
+
+		</script>
+	</body>
+</html>

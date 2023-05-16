@@ -1,0 +1,18 @@
+bootstrap.css第三方樣式引入
+    1、可以在src裡創建assets/css文件夾，將bootstrap.css文件放入，在要用的地方使用：
+        import './assets/css/bootstrap.css'引入
+        註：這種情況可以能會報錯，因為css中的所有東西都需要被定義，不然就會報錯
+    2、可以在public裡創建css文件夾，將bootstrap.css文件放入，在public/index.html中使用標籤引入：
+        <link rel="stylesheet" href="<%= BASE_URL %>css/bootstrap.css">
+
+
+發送Ajax請求：
+    1. xhr
+    2. jQuery封裝
+    3. axios封裝(推薦使用)
+    4. fetch（與xhr平級）
+    5. vue-resource(對xhr封裝)
+vue-resource使用：Vue1.0時使用場景較多
+    1. 下載：npm i vue-resource
+    2. 在main.js中引入並使用：import vueResource from 'vue-resource'    Vue.use(vueResource)
+    3. 在需要發送請求時直接使用，用法與axios一樣，直接用this.$http.get()替換掉axios.get()即可

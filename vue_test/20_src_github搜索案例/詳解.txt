@@ -1,0 +1,6 @@
+bootstrap.css第三方樣式引入
+    1、可以在src裡創建assets/css文件夾，將bootstrap.css文件放入，在要用的地方使用：
+        import './assets/css/bootstrap.css'引入
+        註：這種情況可以能會報錯，因為css中的所有東西都需要被定義，不然就會報錯
+    2、可以在public裡創建css文件夾，將bootstrap.css文件放入，在public/index.html中使用標籤引入：
+        <link rel="stylesheet" href="<%= BASE_URL %>css/bootstrap.css">

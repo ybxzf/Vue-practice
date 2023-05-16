@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>列表渲染</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 这是一个容器 -->
+		<div class="root">
+			<h2>人员列表</h2>
+            <ul>
+                <!-- v-for循环，并为每个p配置唯一值p.id,也可以为index索引值，因为索引值唯一 -->
+                <li v-for="(p,index) in persons" :key="p.id">
+                    {{p.name}}--{{p.age}}--索引为：{{index}}
+                </li>
+            </ul><hr>
+            <h2>汽车信息</h2>
+            <ul>
+                <!-- v-for循环，并为每个p配置唯一值p.id,也可以为index索引值，因为索引值唯一 -->
+                <li v-for="(c,index) in car" :key="index">
+                    {{index}}--{{c}}
+                </li>
+            </ul><hr>
+		</div>
+
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false ; //阻止vue启动时生成生产提示
+			new Vue({
+                el:'.root',
+                data:{
+                    persons:[
+                        {id:'001',name:'张三',age:18},
+                        {id:'002',name:'李四',age:19},
+                        {id:'003',name:'王五',age:20},
+                    ],
+                    car:{
+                        name:'奥迪A8',
+                        price:'70万',
+                        color:'黑色',
+                    },
+                },
+            })
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>列表渲染</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+		<style>
+			
+			.header {
+				margin-top: 15px;
+				margin-left: 40px;
+				font-size: 16px;
+			}
+			.table {
+				margin: 17px auto;
+			}
+
+		</style>
+	</head>
+	<body>
+		<!-- 这是一个容器 -->
+			<div class="main">
+			  <div class="header">關鍵人才滿足本月進度</div>
+			  <el-table class="table" :data="tableData" style="width: 95%" stripe  height="250">
+				<el-table-column
+				  prop="site"
+				  label="Site-廠端"
+				  width="155"
+				></el-table-column>
+				<el-table-column
+				  prop="department"
+				  label="部門"
+				  width="155"
+				></el-table-column>
+				<el-table-column
+				  prop="manage"
+				  label="管理層級"
+				  width="155"
+				></el-table-column>
+				<el-table-column
+				  prop="renum"
+				  label="關鍵崗位需求人數"
+				  width="155"
+				></el-table-column>
+				<el-table-column
+				  prop="strategy"
+				  label="人才滿足策略"
+				  width="155"
+				></el-table-column>
+				<el-table-column
+				  prop="schedule"
+				  label="行動計劃本月進度"
+				  width="155"
+				></el-table-column>
+				<el-table-column
+				  prop="date"
+				  label="計劃完成時間(Y/M/D)"
+				  width="155"
+				></el-table-column>
+				<el-table-column prop="month" label="盤點月份"></el-table-column>
+			  </el-table>
+			</div>
+		  
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false ; //阻止vue启动时生成生产提示
+			new Vue({
+                el:'#main',
+                data:{
+					tableData: [
+						{
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						}, {
+							site: 'WKS-P1',department: 'MRO採購部',manage: '4非課級',renum: '1',strategy: '',schedule: '',date: '',month: '202106',
+						},
+				],
+
+                    
+                },				
+				methods: {
+				},
+            })
+
+		</script>
+	</body>
+</html>

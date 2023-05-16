@@ -1,0 +1,53 @@
+<!-- 
+    在F12的应用（Application）栏下有一个localStorage和sessionStorage，用于在本地存储某些网站的部分缓存数据
+    sessionStorage：浏览器关闭存储的数据就消失了
+        1、只能存储字符串
+        2、当存储的是对象的时候，他会调用toString方法存，结果就是object，读的时候也不知道是啥，只能显示object
+            为了不让他调用toString方法，可以使用JSON.stringify(存储的对象)
+        3、sessionStorage的方法：
+            1.存数据：sessionStorage.setItem('key','value')  以键值对形式存储
+            2.读数据：sessionStorage.getItem('key') 如果key不存在，则读出的值为：null
+            3.删数据：
+                删除指定：sessionStorage.removeItem('key')    
+                删除全部：sessionStorage.clear()
+    
+    1.存储内容大小一般支持5MB左右（不同浏览器可能还不一样）
+    2.浏览器端通过 Window.sessionStorage 和 Window.localStorage 属性来实现本地存储机制。
+    3.相关API：
+        (1).xxxxxStorage.setItem('key', 'value'); 该方法接受一个键和值作为参数，会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+        (2).xxxxxStorage.getItem('person'); 该方法接受一个键名作为参数，返回键名对应的值。
+        (3).xxxxxStorage.removeItem('key'); 该方法接受一个键名作为参数，并把该键名从存储中删除。
+        (4).xxxxxStorage.clear();    该方法会清空存储中的所有数据。
+    4.备注：
+        (1).SessionStorage存储的内容会随着浏览器窗口关闭而消失。
+        (2).LocalStorage存储的内容，需要手动清除才会消失。
+        (3).xxxxxStorage.getItem(xxx)如果xxx对应的value获取不到，那么getItem的返回值是null。
+        (4).JSON.parse(null)的结果依然是null。
+ -->
+
+ <body>
+     <h2>sessionStorage</h2>
+     <button onclick="saveData()">点我保存一个数据</button>
+     <button onclick="readData()">点我读取一个数据</button>
+     <button onclick="deleteData()">点我删除一个数据</button>
+     <button onclick="deleteAllData()">点我删除所有数据</button>
+ </body>
+
+ <script>
+     let saveObject = {name:'张三',age:18}
+     function saveData(){//存数据
+        sessionStorage.setItem('key','value')
+        sessionStorage.setItem('对象',JSON.stringify(saveObject))
+     }
+     function readData(){
+         const result = sessionStorage.getItem('对象')
+        console.log(JSON.parse(result))
+     }
+     function deleteData(){
+         sessionStorage.removeItem('对象')
+     }
+     function deleteAllData(){
+         sessionStorage.clear()
+     }
+
+ </script>

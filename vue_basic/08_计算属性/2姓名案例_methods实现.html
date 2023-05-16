@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>姓名案例_methods实现</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 这是一个容器 -->
+		<div class="root">
+			姓：<input type="text" v-model="firstName"><br><br>
+			名：<input type="text" v-model="lastName"><br><br>
+			全名：<span>{{fullName()}}</span>
+		</div>
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false ; //阻止vue启动时生成生产提示
+		const vm = new Vue({
+			el:'.root',
+			data:{
+				firstName:'张',
+				lastName:'三',
+			},
+			methods:{
+				fullName(){
+					return this.firstName+"--"+this.lastName
+				}
+			},
+		})
+
+
+	</script>
+</html>

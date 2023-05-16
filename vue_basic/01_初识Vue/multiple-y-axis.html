@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+    <style>
+     .outBox{
+      height: 300px;
+      width: 580px;
+      background-color: rgb(255, 255, 255);
+      border:1px solid #000;
+      padding: 20px;
+      position: absolute;
+      left: 52%;
+      top:25px;
+    } 
+    .inBox{
+     
+      /* border:1px solid #000; */
+      height: 100%;
+      width: 100%; 
+      
+    }
+    </style>
+    <!-- <body style="height: 100%; margin: 0;"> -->
+      <body>
+      <div class="outBox">
+        關鍵人才招募達成率by厂区
+      <!-- <div id="container" style="height: 100%;padding-top: 10px"></div> -->
+      <div id="container" class="inBox"></div>
+      </div>
+      <script type="text/javascript">
+      var dom = document.getElementById("container");
+      var myChart = echarts.init(dom);
+      var app = {};
+      var option;
+  const colors = ['rgb(74, 141, 220)', 'rgb(76, 93, 138)', 'rgb(232, 194, 30)'];
+  option = {
+    color: colors,
+    //提示框
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'cross'
+      }
+    },
+    grid: {//图标离容器的距离
+      left:'2%',
+      right: '2%',
+      top:'10%',
+      bottom:'13%',
+    },
+    toolbox: {//工具箱
+      feature: {
+        //dataView: { show: true, readOnly: false },// 数据视图
+        //restore: { show: true },// 重置
+        //saveAsImage: { show: true }// 导出图片
+      }
+    },
+    legend: {
+      //小标题位置
+      x:5,
+      y:5,
+      data: ['总管理岗位数', '2年有接班人的岗位数', '接班准备度'],
+      icon:"circle",
+      itemWidth: 10,  // 设置宽度
+      itemGap: 4, // 设置间距
+      textStyle:{
+        fontSize:8,
+      }
+      
+    },
+    //X轴设置
+    xAxis: [
+      {
+        type: 'category',
+        axisTick: {
+          alignWithLabel: true
+        },
+        data: ['WZS-P1', 'WZS-P6', 'WZS-Site', 'WKS-P1', 'WCD-Plant', 'WZS-P3','WCQ-Plant','WIH-P1', 'WCD-Site', 'WCQ-Site', 'WIH-HuKou-P1', 'WIH-HuKou-P2', 'WIH-Site'],
+        //文字倾斜
+        axisLabel:{ 
+            rotate : 30,
+            fontSize:7,
+        }
+      }
+    ],
+    //Y轴设置
+    yAxis: [
+      {
+        min:0,//最小刻度
+        max:160,//最大刻度
+        type: 'value',
+        //name: '总管理岗位数',
+        position: 'right',
+        //alignTicks: true,//关联
+        axisLine: {
+          //show: true,//显示Y轴
+          lineStyle: {
+            //color: colors[0]
+            color:'#fff',//Y轴刻度设为白色隐藏
+          },
+        },
+        axisLabel: {
+          formatter: '{value} '//Y轴数值
+        },
+        splitLine: {//不显示表格背景线
+            show: false,
+          }
+      },
+      {
+        min:0,
+        max:160,//最大刻度
+        type: 'value',
+        //name: '2年有接班人的岗位数',
+        position: 'right',
+        //alignTicks: true,//关联
+        offset: 80,
+        axisLine: {
+          //show: true,//显示Y轴
+          lineStyle: {
+            //color: colors[0]
+            color:'#fff',//Y轴刻度设为白色隐藏
+          }
+        },
+        axisLabel: {
+          formatter: '{value} '//Y轴数值
+        },
+        splitLine: {//不显示表格背景线
+            show: false,
+          }
+      },
+      {
+        min:40,
+        max:100,
+        type: 'value',
+        //name: '百分比',
+        position: 'left',
+        //alignTicks: true,//关联
+        axisLine: {
+          //show: true,//显示Y轴
+          lineStyle: {
+            //color: colors[2]
+            color:'#fff',
+          }
+        },
+        axisLabel: {
+          formatter: '{value} %'//Y轴数值
+        },
+        splitLine: {//不显示表格背景线
+            show: false,
+          }
+      }
+    ],
+    //设置图形样式
+    series: 
+    [
+      {
+        name: '总管理岗位数',
+        type: 'bar',
+        data: [154, 111, 106, 101, 96, 89, 84, 75, 46, 37, 30, 19, 13],
+        barGap:'0%',/*多个并排柱子设置柱子之间的间距*/
+               
+        //设置数值上方显示
+        itemStyle: {
+          normal: {
+            label: {
+              show: true,		//开启显示
+              position: 'top',	//在上方显示
+              textStyle: {	    //数值样式
+                color: 'rgb(129,127,124)',
+                fontSize: 8,
+              }
+            }
+          }
+        }
+
+      },
+      {
+        name: '2年有接班人的岗位数',
+        type: 'bar',
+        yAxisIndex: 1,
+        data: [151, 105, 100, 96, 90, 78, 81, 57, 40, 34, 15, 8, 11],
+        //设置数值上方显示
+        itemStyle: {
+          normal: {
+            label: {
+              show: true,		//开启显示
+              position: 'top',	//在上方显示
+              textStyle: {	    //数值样式
+                color: 'rgb(129,127,124)',
+                fontSize: 8,
+              }
+            }
+          }
+        }
+      },
+      {
+        name: '接班准备度',
+        type: 'line',
+        yAxisIndex: 2,
+        symbol:'circle',
+        data: [98.1, 94.6, 94.3, 95.0, 93.8, 87.6, 96.4, 76.0, 87.0, 91.9, 50.0, 42.1, 84.6 ],
+        //设置数值上方显示
+        itemStyle: {
+          normal: {
+            label: {
+              formatter:'{c}'+'%',
+              show: true,		//开启显示
+              position: 'top',	//在上方显示
+              textStyle: {	    //数值样式
+                color: 'rgb(129,127,124)',
+                fontSize: 8,
+              }
+            }
+          }
+        }
+      }
+    ]
+  };
+
+  if (option && typeof option === 'object') {
+      myChart.setOption(option);
+  }
+
+        </script>
+    </body>
+</html>
+    

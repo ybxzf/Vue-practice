@@ -1,0 +1,40 @@
+<!-- 
+    在F12的应用（Application）栏下有一个localStorage和sessionStorage，用于在本地存储某些网站的部分缓存数据
+    localStorage：浏览器关了存储的数据还在
+        1、只能存储字符串
+        2、当存储的是对象的时候，他会调用toString方法存，结果就是object，读的时候也不知道是啥，只能显示object
+            为了不让他调用toString方法，可以使用JSON.stringify(存储的对象)
+        3、localStorage的方法：
+            1.存数据：localStorage.setItem('key','value')  以键值对形式存储
+            2.读数据：localStorage.getItem('key') 如果key不存在，则读出的值为：null
+            3.删数据：
+                删除指定：localStorage.removeItem('key')    
+                删除全部：localStorage.clear()
+ -->
+
+ <body>
+    <h2>localStorage</h2>
+    <button onclick="saveData()">点我保存一个数据</button>
+    <button onclick="readData()">点我读取一个数据</button>
+    <button onclick="deleteData()">点我删除一个数据</button>
+    <button onclick="deleteAllData()">点我删除所有数据</button>
+</body>
+
+<script>
+    let saveObject = {name:'张三',age:18}
+    function saveData(){//存数据
+       localStorage.setItem('key','value')
+       localStorage.setItem('对象',JSON.stringify(saveObject))
+    }
+    function readData(){
+        const result = localStorage.getItem('对象')
+       console.log(JSON.parse(result))
+    }
+    function deleteData(){
+        localStorage.removeItem('对象')
+    }
+    function deleteAllData(){
+        localStorage.clear()
+    }
+
+</script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<!-- 数据代理：通过一个对象对另一个对象中属性的代理操作：读/写 -->
+		<title>最简单数据代理</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<!-- 这是一个容器 -->
+		<div class="root">
+			<h1>hello,{{name}}</h1>
+		</div>
+
+
+		<script type="text/javascript">
+			Vue.config.productionTip = false ; //阻止vue启动时生成生产提示
+			let obj={x:100};
+			let obj2={y:200};
+			//想要操作obj2去修改obj的属性值
+			Object.defineProperty(obj2,'x',{
+				get(){
+					return obj.x;
+				},
+				set(value){
+					obj.x=value;
+				}
+			})
+
+
+
+		</script>
+	</body>
+</html>

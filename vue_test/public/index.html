@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <!-- 针对IE浏览器的特殊配置，表示以最高级别进行渲染 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 开启移动端的理想视口 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <!-- 配置页签图标 <%= BASE_URL %>表示当前public这个路径 -->
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <!-- 引入第三方樣式 -->
+    <link rel="stylesheet" href="<%= BASE_URL %>css/bootstrap.css">
+    <!-- 配置网页标题，直接去package.json去找name -->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <!-- 当浏览器不支持js时，提示这句话 -->
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+
+
+
+    
+    <!-- 容器 -->
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
